@@ -84,6 +84,17 @@
   let runSeq = 0;
   let lastItemId = "";
 
+  /* ── INVERT PERSISTENCE ──────────────────────────────────── */
+  const INVERT_KEY = "jf2-grid-inverted";
+
+  function getInverted() {
+    try { return localStorage.getItem(INVERT_KEY) === "true"; } catch { return false; }
+  }
+
+  function setInverted(v) {
+    try { localStorage.setItem(INVERT_KEY, v ? "true" : "false"); } catch {}
+  }
+
   function scheduleRun(delay) {
     if (scheduled) clearTimeout(scheduled);
     scheduled = setTimeout(run, typeof delay === "number" ? delay : 0);
@@ -238,6 +249,11 @@
       }
 
       .jf2-btn svg { opacity: .75; }
+
+      .jf2-btn.jf2-btn-active {
+        border-color: rgba(255,255,255,.35) !important;
+        background: rgba(255,255,255,.10) !important;
+      }
 
       .jf2-scroll {
         overflow-x: auto;
@@ -632,11 +648,6 @@
 
   /* ── PRIMARY DATASET ─────────────────────────────────────── */
 
-  /**
-   * Converts ya0903/imdb-episode-dataset show format to the internal array format.
-   * Input:  { seasons: { "1": { "1": { r, v }, "2": { r, v } }, "2": { ... } } }
-   * Output: [ [{episode, rating, id}, ...], ... ]  (index 0 = season 1)
-   */
   function convertShowDataToArray(showData) {
     const seasons = showData?.seasons;
     if (!seasons) return null;
@@ -653,7 +664,7 @@
         .map(([epNum, epData]) => ({
           episode: parseInt(epNum, 10),
           rating: typeof epData.r === "number" ? epData.r : null,
-          id: ""   // per-episode IMDb IDs not in this dataset; links fall back to season page
+          id: ""
         }))
         .filter(ep => Number.isFinite(ep.episode) && ep.episode > 0);
       result.push(episodes);
@@ -667,7 +678,6 @@
     const c = cGet(k);
     if (c !== null) return c;
 
-    // jsDelivr CDN: global edge caching, ~1-day cache headers (fine for daily-refresh dataset)
     const r = await fetch(
       CFG.datasetBase + "/" + encodeURIComponent(imdbId) + ".json",
       { credentials: "omit" }
@@ -1172,7 +1182,9 @@
 
   function renderGrid(body, seasons, seriesImdbId) {
     body.innerHTML = "";
-    let inverted = false;
+
+    // Read persisted invert state
+    let inverted = getInverted();
 
     const toolbar = document.createElement("div");
     toolbar.className = "jf2-toolbar";
@@ -1180,7 +1192,7 @@
     toolbar.appendChild(buildLegend());
 
     const invertBtn = document.createElement("button");
-    invertBtn.className = "jf2-btn";
+    invertBtn.className = "jf2-btn" + (inverted ? " jf2-btn-active" : "");
     invertBtn.type = "button";
     invertBtn.innerHTML = `
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1198,8 +1210,8 @@
 
     invertBtn.addEventListener("click", () => {
       inverted = !inverted;
-      invertBtn.style.borderColor = inverted ? "rgba(255,255,255,.35)" : "";
-      invertBtn.style.background = inverted ? "rgba(255,255,255,.10)" : "";
+      setInverted(inverted);
+      invertBtn.classList.toggle("jf2-btn-active", inverted);
 
       const newGrid = buildGrid(seasons, seriesImdbId, inverted);
       gridEl.replaceWith(newGrid);
