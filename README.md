@@ -2,6 +2,9 @@
 
 A custom JavaScript injection for Jellyfin that adds a colour-coded episode ratings grid to any TV series detail page, pulling data directly from IMDb via the [ya0903/imdb-episode-dataset](https://github.com/ya0903/imdb-episode-dataset) hosted on jsDelivr's CDN.
 
+![Grid overview](screenshots/grid-overview.png)
+<!-- Add a screenshot of the ratings grid on a series page and save it to screenshots/grid-overview.png -->
+
 ## Features
 
 - Colour-coded rating cells across a full season × episode grid
@@ -27,6 +30,9 @@ A custom JavaScript injection for Jellyfin that adds a colour-coded episode rati
 | 🔴 Red | 5.0–5.9 |
 | 🟣 Purple | Below 5.0 |
 | ⚪ Grey | No rating / unreleased |
+
+![Colour scale close-up](screenshots/colour-scale.png)
+<!-- Add a close-up screenshot of the colour scale / legend and save it to screenshots/colour-scale.png -->
 
 ## Requirements
 
@@ -56,8 +62,7 @@ s.src = "https://cdn.jsdelivr.net/gh/ya0903/jellyfin-episode-grid@main/jellyfin-
 document.head.appendChild(s);
 ```
 
-4. Replace `YOUR_USERNAME` and `YOUR_REPO` with your GitHub username and repository name
-5. Click **Save** and hard-refresh your browser (`Ctrl+Shift+R`)
+4. Click **Save** and hard-refresh your browser (`Ctrl+Shift+R`)
 
 ### Option B — Jellyfin Custom JavaScript field (manual, pinned)
 
@@ -65,7 +70,7 @@ If you'd rather self-host the script or pin to a specific version without relyin
 
 1. In Jellyfin, go to **Dashboard → General**
 2. Scroll down to **Custom JavaScript**
-3. Paste the entire contents of `jellyfin-imdb-ratings.js` into the field
+3. Paste the entire contents of `jellyfin-episode-grid.js` into the field
 4. Click **Save** and hard-refresh your browser (`Ctrl+Shift+R`)
 
 ### Option C — Tampermonkey / Violentmonkey
@@ -92,11 +97,11 @@ Replace `YOUR_JELLYFIN_URL` with your actual Jellyfin address (e.g. `jellyfin.ex
 If you have filesystem access to your Jellyfin web client:
 
 1. Locate the Jellyfin web root (typically `/usr/share/jellyfin/web/` on Linux)
-2. Copy `jellyfin-imdb-ratings.js` there
+2. Copy `jellyfin-episode-grid.js` there
 3. Edit `index.html` and add before `</body>`:
 
 ```html
-<script src="jellyfin-imdb-ratings.js"></script>
+<script src="jellyfin-episode-grid.js"></script>
 ```
 
 ## How It Works
@@ -107,6 +112,9 @@ If you have filesystem access to your Jellyfin web client:
 4. Episode metadata (names, air dates, combined episode flags) is fetched from your local Jellyfin library
 5. The two data sources are merged and rendered as a grid, inserted above the cast section
 6. If the show isn't in the dataset, the grid falls back to a link to the IMDb ratings page
+
+![Inverted layout](screenshots/inverted-layout.png)
+<!-- Add a screenshot showing the inverted (episodes as columns) layout and save it to screenshots/inverted-layout.png -->
 
 ## Data Source
 
