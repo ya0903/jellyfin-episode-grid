@@ -2,8 +2,6 @@
 
 A custom JavaScript injection for Jellyfin that adds a colour-coded episode ratings grid to any TV series detail page, pulling data directly from IMDb via the [ya0903/imdb-episode-dataset](https://github.com/ya0903/imdb-episode-dataset) hosted on jsDelivr's CDN.
 
-# [Javascript Plugin](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) must be installed
-
 ![Grid overview](screenshots/grid-overview.png)
 
 ## Features
@@ -43,6 +41,7 @@ A custom JavaScript injection for Jellyfin that adds a colour-coded episode rati
 ## Installation
 
 ### Option A — Jellyfin Custom JavaScript field via CDN (recommended)
+####[Javascript Plugin](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) must be installed
 
 The easiest install. Instead of copying the whole script, paste a single loader line into Jellyfin's custom JS field. The script is served directly from this repo via jsDelivr, so you'll automatically receive updates whenever the repo is updated (subject to jsDelivr's CDN cache, which clears within ~24 hours).
 
