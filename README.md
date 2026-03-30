@@ -42,7 +42,7 @@ A custom JavaScript injection for Jellyfin that adds a colour-coded episode rati
 
 ### Option A — Jellyfin Custom JavaScript field via CDN (recommended)
 
-###[Javascript Plugin](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) must be installed
+[Javascript Plugin](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) must be installed
 
 The easiest install. Instead of copying the whole script, paste a single loader line into Jellyfin's custom JS field. The script is served directly from this repo via jsDelivr, so you'll automatically receive updates whenever the repo is updated (subject to jsDelivr's CDN cache, which clears within ~24 hours).
 
