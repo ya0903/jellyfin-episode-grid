@@ -34,7 +34,7 @@ A custom JavaScript injection for Jellyfin that adds a colour-coded episode rati
 
 ## Requirements
 
-- A running Jellyfin instance (tested on Jellyfin 10.x)
+- A running Jellyfin instance (tested on Jellyfin 10.11.6)
 - The series must have an IMDb ID set in its metadata — Jellyfin fetches this automatically via its standard metadata providers
 - A way to inject custom JavaScript into the Jellyfin web client (see Installation below)
 
