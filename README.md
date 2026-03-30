@@ -73,37 +73,6 @@ If you'd rather self-host the script or pin to a specific version without relyin
 3. Paste the entire contents of `jellyfin-episode-grid.js` into the field
 4. Click **Save** and hard-refresh your browser (`Ctrl+Shift+R`)
 
-### Option C — Tampermonkey / Violentmonkey
-
-1. Install [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/) in your browser
-2. Create a new userscript
-3. Replace the default template content with the following header, then paste the script body beneath it:
-
-```js
-// ==UserScript==
-// @name         Jellyfin IMDb Episode Ratings Grid
-// @namespace    jellyfin-imdb-ratings
-// @version      1.0
-// @match        http://YOUR_JELLYFIN_URL/*
-// @match        https://YOUR_JELLYFIN_URL/*
-// @grant        none
-// ==/UserScript==
-```
-
-Replace `YOUR_JELLYFIN_URL` with your actual Jellyfin address (e.g. `jellyfin.example.com`).
-
-### Option D — Direct file injection
-
-If you have filesystem access to your Jellyfin web client:
-
-1. Locate the Jellyfin web root (typically `/usr/share/jellyfin/web/` on Linux)
-2. Copy `jellyfin-episode-grid.js` there
-3. Edit `index.html` and add before `</body>`:
-
-```html
-<script src="jellyfin-episode-grid.js"></script>
-```
-
 ## How It Works
 
 1. When you navigate to a TV series detail page, the script detects the Jellyfin item ID from the URL
