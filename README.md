@@ -3,7 +3,6 @@
 A custom JavaScript injection for Jellyfin that adds a colour-coded episode ratings grid to any TV series detail page, pulling data directly from IMDb via the [ya0903/imdb-episode-dataset](https://github.com/ya0903/imdb-episode-dataset) hosted on jsDelivr's CDN.
 
 ![Grid overview](screenshots/grid-overview.png)
-<!-- Add a screenshot of the ratings grid on a series page and save it to screenshots/grid-overview.png -->
 
 ## Features
 
@@ -31,8 +30,7 @@ A custom JavaScript injection for Jellyfin that adds a colour-coded episode rati
 | 🟣 Purple | Below 5.0 |
 | ⚪ Grey | No rating / unreleased |
 
-![Colour scale close-up](screenshots/colour-scale.png)
-<!-- Add a close-up screenshot of the colour scale / legend and save it to screenshots/colour-scale.png -->
+
 
 ## Requirements
 
@@ -114,7 +112,6 @@ If you have filesystem access to your Jellyfin web client:
 6. If the show isn't in the dataset, the grid falls back to a link to the IMDb ratings page
 
 ![Inverted layout](screenshots/inverted-layout.png)
-<!-- Add a screenshot showing the inverted (episodes as columns) layout and save it to screenshots/inverted-layout.png -->
 
 ## Data Source
 
