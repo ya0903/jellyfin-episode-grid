@@ -46,17 +46,13 @@ The easiest install. Instead of copying the whole script, paste a single loader 
 
 **Using dynamic import (cleanest):**
 ```js
-import("https://cdn.jsdelivr.net/gh/ya0903/
-jellyfin-episode-grid@main/
-jellyfin-episode-grid.js");
+import("https://cdn.jsdelivr.net/gh/ya0903/jellyfin-episode-grid@main/jellyfin-episode-grid.js");
 ```
 
 **Using script tag injection (more compatible):**
 ```js
 const s = document.createElement("script");
-s.src = "https://cdn.jsdelivr.net/gh/ya0903/
-jellyfin-episode-grid@main/
-jellyfin-episode-grid.js";
+s.src = "https://cdn.jsdelivr.net/gh/ya0903/jellyfin-episode-grid@main/jellyfin-episode-grid.js";
 document.head.appendChild(s);
 ```
 
