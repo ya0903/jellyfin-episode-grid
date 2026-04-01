@@ -1,7 +1,7 @@
 # Jellyfin IMDb Episode Ratings Grid
 
 A custom JavaScript injection for Jellyfin that adds a colour-coded episode ratings grid to any TV series detail page, pulling data directly from IMDb via the [ya0903/imdb-episode-dataset](https://github.com/ya0903/imdb-episode-dataset) hosted on jsDelivr's CDN. Massive credit to [jellyfin-imdb-episodes-heatmap-ratings-grid](https://github.com/Damocles-fr/jellyfin-imdb-episodes-heatmap-ratings-grid) and [Damocles-fr](https://github.com/Damocles-fr) for original idea and code.
-# Heavily LLM assisted
+#### Heavily LLM assisted
 
 ![Grid overview](screenshots/grid-overview.png)
 
